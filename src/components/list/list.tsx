@@ -1,13 +1,7 @@
 import React from 'react';
+import { IState as IProps } from '../app/app';
 
-interface IProps {
-  people: {
-    name: string,
-    age: number,
-    url: string,
-    note?: string
-  }[]
-}
+
 // alternative 
 // const List = ({ people }: IProps) => {
 const List: React.FC<IProps> = ({ people }) => {
@@ -15,7 +9,7 @@ const List: React.FC<IProps> = ({ people }) => {
   const renderList = ():JSX.Element[] => {
     return people.map(person => {
       return (
-        <li className='List'>
+        <li key={person.name} className='List'>
           <div className='List-header'>
             <img className='List-img' src={person.url}/>
             <h2>{person.name}</h2>
